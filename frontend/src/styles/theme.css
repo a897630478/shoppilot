@@ -1,0 +1,150 @@
+/* frontend/src/styles/theme.css
+ * ShopPilot 全局视觉令牌（M5b 品牌收尾后的视觉升级）
+ * 方向：买手店 × 智能导购 —— 冷白灰绿底、墨绿黑结构、青瓷绿品牌、暖橙价格
+ * 引入顺序：在 element-plus/dist/index.css 之后，全局变量覆盖 EP 默认色
+ */
+
+:root {
+  /* ── 色板 ── */
+  --sp-bg: #f5f7f6;          /* 冷白灰绿，页面底 */
+  --sp-surface: #ffffff;
+  --sp-ink: #1c2420;         /* 墨绿黑，正文/侧栏 */
+  --sp-ink-2: #5c6b64;       /* 次级文字 */
+  --sp-ink-3: #8a968f;       /* 三级/占位 */
+  --sp-primary: #2f6f5e;     /* 青瓷绿，品牌主色 */
+  --sp-primary-soft: #e7f0ec;
+  --sp-accent: #e07b39;      /* 暖橙，价格与行动 */
+  --sp-accent-soft: #fbede2;
+  --sp-danger: #c45c4a;      /* 陶土红 */
+  --sp-line: #e2e8e4;
+  --sp-sidebar: #1c2420;
+  --sp-sidebar-hover: #ffffff14;
+  --sp-shadow: 0 1px 2px #1c24200a, 0 4px 16px #1c24200d;
+
+  /* ── 字体 ── */
+  --sp-font: "PingFang SC", "Microsoft YaHei", "HarmonyOS Sans SC", system-ui, -apple-system, sans-serif;
+  --sp-num: "DIN Alternate", "Bahnschrift", "PingFang SC", system-ui, sans-serif;
+
+  /* ── Element Plus 主题覆盖 ── */
+  --el-color-primary: #2f6f5e;
+  --el-color-primary-light-3: #6fa393;
+  --el-color-primary-light-5: #95bdb1;
+  --el-color-primary-light-7: #bbd5cd;
+  --el-color-primary-light-8: #d0e2dd;
+  --el-color-primary-light-9: #e7f0ec;
+  --el-color-primary-dark-2: #26594b;
+  --el-color-success: #3f8a6e;
+  --el-color-success-light-9: #e7f0ec;
+  --el-color-warning: #d98e32;
+  --el-color-warning-light-9: #fbede2;
+  --el-color-danger: #c45c4a;
+  --el-color-danger-light-9: #f8ebe8;
+  --el-color-error: #c45c4a;
+  --el-color-info: #8a968f;
+  --el-border-radius-base: 8px;
+  --el-border-radius-small: 6px;
+  --el-font-family: var(--sp-font);
+  --el-text-color-primary: #1c2420;
+  --el-text-color-regular: #5c6b64;
+  --el-border-color: #e2e8e4;
+  --el-border-color-light: #e2e8e4;
+  --el-border-color-lighter: #edf1ee;
+  --el-fill-color-light: #f5f7f6;
+}
+
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sp-font);
+  background: var(--sp-bg);
+  color: var(--sp-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 焦点可见（键盘可达性） */
+:focus-visible {
+  outline: 2px solid var(--sp-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 智能价签（签名母题）──────────────────────────────────
+ * 实体商超价签：左侧竖线 + ¥ 上标 + 大号 tabular 数字
+ * 商品卡/详情/订单金额统一使用
+ * ─────────────────────────────────────────────────────── */
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding-left: 10px;
+  border-left: 3px solid var(--sp-accent);
+  color: var(--sp-accent);
+  font-family: var(--sp-num);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+.price-tag .yen {
+  font-size: 0.72em;
+  font-weight: 600;
+  transform: translateY(-0.18em);
+}
+.price-tag .num {
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.price-tag--lg .num { font-size: 2em; }
+.price-tag--sm { padding-left: 6px; border-left-width: 2px; }
+.price-tag--sm .num { font-size: 1.05em; }
+
+/* 能力卡上的价签变体：青瓷绿竖线（非价格场景） */
+.price-tag--brand {
+  border-left-color: var(--sp-primary);
+  color: var(--sp-primary);
+}
+.price-tag--brand .num { color: var(--sp-ink); font-family: var(--sp-font); font-weight: 700; font-size: 1.15em; }
+
+/* ── 通用排版工具 ── */
+.sp-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--sp-primary);
+  text-transform: none;
+  margin-bottom: 6px;
+}
+.sp-page-title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--sp-ink);
+}
+.sp-page-sub {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: var(--sp-ink-2);
+}
+
+/* 卡片 hover 微交互（尊重 reduced-motion 由上方全局规则兜底） */
+.sp-hover {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.sp-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sp-shadow);
+}

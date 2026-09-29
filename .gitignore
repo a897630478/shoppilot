@@ -1,0 +1,32 @@
+# ShopPilot .gitignore
+
+# 环境与密钥（绝不入库）
+.env.local
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 模型权重（体积大，启动可自动下载/本地放置）
+backend/models/
+
+# 前端依赖与构建产物
+frontend/node_modules/
+frontend/dist/
+frontend/vite.log
+*.log
+
+# IDE / 工具缓存
+.idea/
+.pytest_cache/
+.jbeval/
+.langgraph_api/
+.DS_Store
+
+# 运行时临时
+*.tmp
+*.bak

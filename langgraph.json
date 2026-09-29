@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "resume": "./backend/agents/resume/graph.py:build_resume_graph"
+  },
+  "env": ".env.local"
+}
