@@ -1,7 +1,7 @@
 # ShopPilot — 电商场景的 AI 多智能体平台
 
 > 面向电商购物场景的 AI 原生导购与服务系统。  
-> 基于 **LangChain + LangGraph + FastAPI** 构建，核心大模型为 **DeepSeek**，由开源项目 EduAgent 改造而来。
+> 基于 **LangChain + LangGraph + FastAPI** 构建，核心大模型为 **DeepSeek**。
 
 ---
 
@@ -88,8 +88,8 @@ ShopPilot 将电商场景的四类高频服务封装为独立 AI Agent，每个 
 ### 1. 创建环境
 
 ```bash
-conda create -n edu_agent python=3.11 -y   # 环境名沿用既有 edu_agent
-conda activate edu_agent
+conda create -n shop_pilot python=3.11 -y   # 环境名沿用既有 edu_agent
+conda activate shop_pilot
 pip install -r requirements.txt
 ```
 
@@ -122,7 +122,7 @@ python scripts/seed_data.py                    # 测试账号
 ### 5. 一键启动（推荐）
 
 ```bash
-conda activate edu_agent
+conda activate shop_pilot
 python start.py
 ```
 
