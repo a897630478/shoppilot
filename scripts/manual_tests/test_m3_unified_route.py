@@ -9,7 +9,7 @@ BASE = "http://localhost:8000"
 
 def _headers() -> dict:
     r = httpx.post(f"{BASE}/api/v1/auth/login", json={
-        "username": "student01@eduagent.local", "password": "Student@123456",
+        "username": "student01@shoppilot.local", "password": "Student@123456",
     })
     assert r.status_code == 200
     tok = r.json().get("access_token") or r.json().get("token")

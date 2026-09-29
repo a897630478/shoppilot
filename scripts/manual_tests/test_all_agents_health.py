@@ -10,7 +10,7 @@ BASE_URL = "http://localhost:8000/api/v1"
 def login():
     resp = httpx.post(
         f"{BASE_URL}/auth/login",
-        json={"username": "student01@eduagent.local", "password": "Student@123456"},
+        json={"username": "student01@shoppilot.local", "password": "Student@123456"},
         trust_env=False,
     )
     resp.raise_for_status()

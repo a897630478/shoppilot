@@ -1,7 +1,7 @@
 # start.py — ShopPilot 一键启动（开发环境）
 #
 # 用法（必须用项目 conda 环境的 python 运行）：
-#   conda activate edu_agent
+#   conda activate shop_pilot
 #   python start.py
 #
 # 行为：
@@ -179,8 +179,8 @@ def main() -> None:
         print("  ✅ ShopPilot 已启动")
         print("  前端     http://localhost:3000")
         print("  接口文档 http://localhost:8000/docs")
-        print("  顾客账号 student01@eduagent.local / Student@123456")
-        print("  运营账号 teacher01@eduagent.local / Teacher@123456")
+        print("  顾客账号 student01@shoppilot.local / Student@123456")
+        print("  运营账号 teacher01@shoppilot.local / Teacher@123456")
         print("  按 Ctrl+C 退出并停止全部服务")
         print("-" * 56, flush=True)
 

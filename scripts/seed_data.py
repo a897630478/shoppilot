@@ -29,10 +29,10 @@ async def seed_users():
     print("✅ 数据库连接成功，开始灌入测试账号...")
     try:
         users = [
-            {"username": "admin",     "email": "admin@qq.com",     "pwd": "123456",   "role": "admin"},
-            {"username": "teacher01", "email": "teacher01@eduagent.local", "pwd": "Teacher@123456", "role": "teacher"},
-            {"username": "student01", "email": "student01@eduagent.local", "pwd": "Student@123456", "role": "student"},
-            {"username": "student02", "email": "student02@eduagent.local", "pwd": "Student@123456", "role": "student"},
+            {"username": "admin",     "email": "admin@shoppilot.local",     "pwd": "123456",   "role": "admin"},
+            {"username": "teacher01", "email": "teacher01@shoppilot.local", "pwd": "Teacher@123456", "role": "teacher"},
+            {"username": "student01", "email": "student01@shoppilot.local", "pwd": "Student@123456", "role": "student"},
+            {"username": "student02", "email": "student02@shoppilot.local", "pwd": "Student@123456", "role": "student"},
         ]
         for u in users:
             await conn.execute(
@@ -46,10 +46,10 @@ async def seed_users():
                 u["role"],
             )
         print(f"✅ 测试账号灌入完成（{len(users)} 个，已存在则跳过）：")
-        print("   admin@eduagent.local      / Admin@123456")
-        print("   teacher01@eduagent.local  / Teacher@123456")
-        print("   student01@eduagent.local  / Student@123456")
-        print("   student02@eduagent.local  / Student@123456")
+        print("   admin@shoppilot.local      / Admin@123456")
+        print("   teacher01@shoppilot.local  / Teacher@123456")
+        print("   student01@shoppilot.local  / Student@123456")
+        print("   student02@shoppilot.local  / Student@123456")
     finally:
         await conn.close()                           # 无论成败都关闭连接
 

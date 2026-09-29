@@ -10,7 +10,7 @@ BASE = "http://localhost:8000"
 
 def _token() -> str:
     r = httpx.post(f"{BASE}/api/v1/auth/login", json={
-        "username": "student01@eduagent.local", "password": "Student@123456",
+        "username": "student01@shoppilot.local", "password": "Student@123456",
     })
     if r.status_code != 200:
         pytest.skip(f"login failed: {r.status_code} {r.text[:200]}")

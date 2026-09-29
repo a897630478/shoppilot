@@ -6,9 +6,9 @@ import logging                            # Python 标准库的日志模块（�
 import sys                                # 用于把日志输出到标准输出 stdout
 import os
 # print(sys.path)
-eduagents_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# print(f'eduagents_path-->{eduagents_path}')
-sys.path.append(eduagents_path)
+shoppilot_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# print(f'shoppilot_path-->{shoppilot_path}')
+sys.path.append(shoppilot_path)
 from backend.config import get_settings   # 读取配置（需要里面的 log_level 日志级别）
 
 

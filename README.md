@@ -88,7 +88,7 @@ ShopPilot 将电商场景的四类高频服务封装为独立 AI Agent，每个 
 ### 1. 创建环境
 
 ```bash
-conda create -n shop_pilot python=3.11 -y   # 环境名沿用既有 edu_agent
+conda create -n shop_pilot python=3.11 -y
 conda activate shop_pilot
 pip install -r requirements.txt
 ```
@@ -158,11 +158,11 @@ cd frontend && npm install && npm run dev
 
 | 角色 | 账号 | 密码 |
 |------|------|------|
-| 学员（顾客） | student01@eduagent.local | Student@123456 |
-| 教师（运营） | teacher01@eduagent.local | Teacher@123456 |
-| 管理员 | admin@eduagent.local | Admin@123456 |
+| 学员（顾客） | student01@shoppilot.local | Student@123456 |
+| 教师（运营） | teacher01@shoppilot.local | Teacher@123456 |
+| 管理员 | admin@shoppilot.local | 123456 |
 
-> 账号邮箱域沿用历史 `eduagent.local`（数据库既有数据，不影响功能）；运营角色（teacher/admin）可访问侧边栏「售后审批」。
+> 账号由 `scripts/seed_data.py` 写入；运营角色（teacher/admin）可访问侧边栏「售后审批」「FAQ 补录」。
 
 ---
 

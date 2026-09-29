@@ -60,7 +60,7 @@
             登录
           </el-button>
         </el-form>
-        <p class="demo-hint">演示账号：student01@eduagent.local / Student@123456</p>
+        <p class="demo-hint">演示账号：student01@shoppilot.local / Student@123456</p>
       </el-card>
     </main>
   </div>

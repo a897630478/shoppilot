@@ -17,7 +17,7 @@ def _login(username: str, password: str) -> dict:
 
 
 def test_ticket_and_approval_flow():
-    student = _login("student01@eduagent.local", "Student@123456")
+    student = _login("student01@shoppilot.local", "Student@123456")
 
     # 1) 造单：下单 + 模拟支付（quantity=1 取首个商品；金额不足 100 时工单走自动 resolved，测试兼容）
     p = httpx.get(f"{BASE}/api/v1/products", params={"page_size": 1}, headers=student).json()
@@ -57,7 +57,7 @@ def test_ticket_and_approval_flow():
 
     # 4) 若 pending → 运营审批
     if body["status"] == "pending":
-        teacher = _login("teacher01@eduagent.local", "Teacher@123456")
+        teacher = _login("teacher01@shoppilot.local", "Teacher@123456")
         pending = httpx.get(f"{BASE}/api/v1/service/pending-reviews",
                             headers=teacher, timeout=30)
         assert pending.status_code == 200, pending.text

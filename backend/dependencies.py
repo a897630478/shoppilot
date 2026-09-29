@@ -5,8 +5,8 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials  # 解析 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from jose import JWTError, jwt                       # python-jose：JWT 的编解码库
 import os,sys
-eduagents_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(eduagents_path)
+shoppilot_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(shoppilot_path)
 from backend.config import get_settings
 
 settings = get_settings()

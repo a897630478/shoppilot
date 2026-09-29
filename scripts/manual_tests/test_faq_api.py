@@ -16,7 +16,7 @@ def _login(username: str, password: str) -> dict:
 
 
 def test_faq_resolve_and_searchable():
-    teacher = _login("teacher01@eduagent.local", "Teacher@123456")
+    teacher = _login("teacher01@shoppilot.local", "Teacher@123456")
 
     # 1) 直接造一条 pending（低置信度入队的等价数据）
     import asyncio
@@ -44,7 +44,7 @@ def test_faq_resolve_and_searchable():
     assert any(x["id"] == queue_id for x in lst.json()["items"]), "not in pending list"
 
     # 3) 学员无权
-    student = _login("student01@eduagent.local", "Student@123456")
+    student = _login("student01@shoppilot.local", "Student@123456")
     forbidden = httpx.get(f"{BASE}/api/v1/faq/pending", headers=student, timeout=30)
     assert forbidden.status_code == 403
 
