@@ -208,6 +208,16 @@ _MIGRATIONS: list[tuple[str, str]] = [
         "knowledge_pending_queue.answer",
         "ALTER TABLE knowledge_pending_queue ADD COLUMN IF NOT EXISTS answer TEXT",
     ),
+    (
+        # 真实购物评论数据集来源（拆两条：asyncpg 单语句限制）
+        "product_reviews.drop_source_check",
+        "ALTER TABLE product_reviews DROP CONSTRAINT IF EXISTS product_reviews_source_check",
+    ),
+    (
+        "product_reviews.add_source_check_dataset",
+        "ALTER TABLE product_reviews ADD CONSTRAINT product_reviews_source_check "
+        "CHECK (source IN ('generated', 'crawled', 'dataset'))",
+    ),
 ]
 
 

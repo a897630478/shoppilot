@@ -38,10 +38,10 @@ async def _run():
         ))).scalar()
         assert weak == 0, f"{weak} products missing rating"
 
-        # 4. 每个 active 商品评价 ≥30
+        # 4. 每个 active 商品评价 ≥30（真实数据集 source='dataset'）
         short = (await s.execute(text(
             "SELECT count(id) FROM (SELECT p.id FROM products p "
-            "LEFT JOIN product_reviews r ON r.product_id = p.id AND r.source='generated' "
+            "LEFT JOIN product_reviews r ON r.product_id = p.id "
             "WHERE p.is_active GROUP BY p.id HAVING count(r.id) < 30) t"
         ))).scalar()
         assert short == 0, f"{short} products with <30 reviews"

@@ -113,8 +113,7 @@ docker-compose --env-file .env.local up -d postgres minio etcd milvus
 python -m scripts.init_milvus_product          # 商品向量集合
 python -m scripts.ingest_off --limit 100       # 中文商品入库（Open Food Facts）
 python -m scripts.enrich_off_products          # LLM 补价格与详情
-python -m scripts.seed_product_reviews --per-product 30   # 生成评价
-python -m scripts.backfill_product_rating      # 回填星级
+python -m scripts.import_shopping_reviews --per-product 30   # 真实购物评论导入（数据集）
 python -m scripts.build_product_knowledge      # 商品知识入向量索引
 python scripts/seed_data.py                    # 测试账号
 ```
@@ -192,7 +191,7 @@ ShopPilot/
 └── requirements.txt
 ```
 
-**数据流水线脚本**：`ingest_off`（商品入库）→ `enrich_off_products`（价格文案）→ `seed_product_reviews`（评价）→ `backfill_product_rating`（星级）→ `init_milvus_product` + `build_product_knowledge`（向量索引）；`cleanup_education.py` 为历史清理工具。
+**数据流水线脚本**：`ingest_off`（商品入库）→ `enrich_off_products`（价格文案）→ `import_shopping_reviews`（真实购物评论，数据集 `data/online_shopping_10_cats.csv`）→ `init_milvus_product` + `build_product_knowledge`（向量索引）；`cleanup_education.py` 为历史清理工具。
 
 ---
 
@@ -204,7 +203,7 @@ ShopPilot/
 | 第二层：Agent 降级 | 重试仍失败 | 问答直答 / 售后转人工 / 报告默认值 / 导购兜底话术 |
 | 第三层：系统兜底 | 全部失败 | 友好提示 + 已完成结果持久化 + 错误记录 |
 
-**数据约束**：价格与商品参数**以库内数据为准**，LLM 生成内容不覆盖库字段。
+**数据说明**：商品基础信息来自 Open Food Facts 开放数据；**买家评价来自真实购物评论数据集**（`data/online_shopping_10_cats.csv`，6.2 万条，`source=dataset`，情感标签映射星级）；**价格与商品参数为演示数据，以库内为准**，LLM 生成内容不覆盖库字段。
 
 ---
 

@@ -19,11 +19,11 @@ def _login(username: str, password: str) -> dict:
 def test_ticket_and_approval_flow():
     student = _login("student01@shoppilot.local", "Student@123456")
 
-    # 1) 造单：下单 + 模拟支付（quantity=1 取首个商品；金额不足 100 时工单走自动 resolved，测试兼容）
+    # 1) 造单：下单 + 模拟支付（quantity=12 → 首个商品约 ¥118，退款必超 100 阈值转 pending）
     p = httpx.get(f"{BASE}/api/v1/products", params={"page_size": 1}, headers=student).json()
     pid = p["items"][0]["id"]
     o = httpx.post(f"{BASE}/api/v1/orders", json={
-        "product_id": pid, "quantity": 5, "receiver": "测试", "address": "地址",
+        "product_id": pid, "quantity": 12, "receiver": "测试", "address": "地址",
     }, headers=student, timeout=30)
     assert o.status_code == 200, o.text
     order_id = o.json()["id"]
