@@ -26,7 +26,7 @@
       <div class="chat-messages" ref="messagesEl">
         <div v-if="messages.length === 0 && !isStreaming" class="empty-hint">
           <p>🤖 你好！我是 ShopPilot 智能导购助手</p>
-          <p>有任何 IT 学习问题，随时问我</p>
+          <p>商品参数、价格、选购对比，随时问我</p>
         </div>
 
         <ChatBubble
@@ -59,7 +59,7 @@
           v-model="inputText"
           type="textarea"
           :rows="3"
-          placeholder="输入问题，Enter 发送，Shift+Enter 换行"
+          placeholder="例如：矿泉水和纯净水有什么区别？Enter 发送，Shift+Enter 换行"
           resize="none"
           :disabled="isStreaming"
           @keydown="handleKeydown"
